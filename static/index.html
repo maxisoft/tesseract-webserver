@@ -1,0 +1,25 @@
+<html>
+<head></head>
+<body>
+<h1>Tesseract WebServer</h1>
+
+<p>Click 'Browse' or 'Choose File'</p>
+
+<p>Then select an image file</p>
+
+<p>Then click 'Send'</p>
+
+<p>You'll receive a json response</p>
+
+<form
+ method="post"
+ action="/solve"
+ enctype="multipart/form-data">
+ <input type="file" name="pict">
+    <br/>
+ &nbsp;Language:&nbsp;(optional)&nbsp;<input type="text" name="l">
+    <p>
+ <input type="submit" value="Send">
+</form>
+</body>
+</html>
