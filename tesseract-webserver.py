@@ -24,10 +24,10 @@ def list_lang(tess_data_dir):
         path = Path(tess_data_dir)
     if not path.is_dir():
         raise IOError('bad dir {}'.format(tess_data_dir))
-    return lambda lang_file: lang_file.name.rstrip('.traineddata'), path.glob('*.traineddata')
+    return map(lambda lang_file: lang_file.name.rstrip('.traineddata'), path.glob('*.traineddata'))
 
 
-langs = dict(list_lang(TESSDATA_PREFIX))
+langs = set(list_lang(TESSDATA_PREFIX))
 
 @app.route('/')
 def index():
