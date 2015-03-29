@@ -32,13 +32,11 @@ def list_lang(tess_data_dir):
 
 langs = set(list_lang(TESSDATA_PREFIX))
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return app.send_static_file('index.html')
-
-
-@app.route('/solve', methods=['POST'])
-def solve():
+    if request.method == 'GET':
+        return app.send_static_file('index.html')
     lang = request.form.get('l', None) or request.args.get('l', 'eng')
     lang = lang.lower().strip()
     if lang not in langs:
