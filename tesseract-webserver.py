@@ -14,6 +14,9 @@ TESSDATA_PREFIX = os.environ.get('TESSDATA_PREFIX') or '/usr/share/tesseract/tes
 TESSERACT_PATH = os.environ.get('TESSERACT_PATH') or 'tesseract'
 PORT = os.environ.get('TESS_SERVER_PORT') or 5033
 
+TESSERACT_PATH = Path(TESSERACT_PATH)
+PORT = int(PORT)
+
 app = Flask(__name__)
 
 
@@ -50,7 +53,7 @@ def solve():
         img = Image.open(picture_file)
         img.save(in_tmp_file, 'BMP')
         in_tmp_file.flush()
-        cmd = [TESSERACT_PATH, in_tmp_file.name, 'stdout', '-l', lang]
+        cmd = [str(TESSERACT_PATH), in_tmp_file.name, 'stdout', '-l', lang]
         environ = os.environ
         if 'TESSDATA_PREFIX' not in environ:
             environ = dict(environ)
