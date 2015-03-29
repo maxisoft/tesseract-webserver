@@ -10,7 +10,7 @@ from flask import Flask
 from flask import request
 
 
-TESSDATA_PREFIX = os.environ.get('TESSDATA_PREFIX') or '/usr/share/'
+TESSDATA_PREFIX = os.environ.get('TESSDATA_PREFIX') or '/usr/share/tesseract/tessdata'
 TESSERACT_PATH = os.environ.get('TESSERACT_PATH') or 'tesseract'
 PORT = os.environ.get('TESS_SERVER_PORT') or 5033
 
