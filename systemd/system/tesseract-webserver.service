@@ -1,0 +1,11 @@
+[Unit]
+Description=tesseract-webserver
+Wants=network.target network-online.target
+After=network.target network-online.target
+
+[Service]
+Environment="TESSERACT_PATH=tesseract" "TESS_SERVER_PORT=5033" "TESSDATA_PREFIX=/usr/share/tesseract/tessdata"
+ExecStart=/usr/bin/env python -O /opt/tesseract-webserver/tesseract-webserver.py
+
+[Install]
+WantedBy=multi-user.target
